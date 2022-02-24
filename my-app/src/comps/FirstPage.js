@@ -15,7 +15,7 @@ import { firstPgStrings } from "../data/Strings"
         }, 1500);
     })
     
-    return <div className="f fullPg ac jc fc">
+    return <div style={{paddingLeft: '1em', paddingRight: '1em'}} className="f fullPg ac jc fc">
         <h1 ref={headerRef} className='firstPgHeading' dangerouslySetInnerHTML={introPage.heading}/>
         <h3 className='firstPgSubheading' ref={subHeadingRef} dangerouslySetInnerHTML={introPage.subHeading} />
     </div> 

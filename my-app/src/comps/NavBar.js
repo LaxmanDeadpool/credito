@@ -90,19 +90,19 @@ const Navbar=forwardRef(({showPopUp}, ref)=>{
                 {buttonText}
             </button>
     
-            {/* <div className="menuOnSmallScreen">
+            <div className="menuOnSmallScreen">
             <a.div style={{...burgerStyle, zIndex: 3}} className={`overlayMenu flex fixPos `}/>        
     
         {
-            burgerOpened && <div style={{width: '100vw', height: '100vh', gap: '2em', zIndex: 4, top: 0, left: 0}} className="flex fCol fixPos centerItems">
-            {navHeads.map((item, index)=><RenderLink item={item} key={index} index={index} onClick={closingFun} forMobile/>)}
+            burgerOpened && <div className="f fc fixPos ac jc navLinkCont fullPg">
+            {middleTitles.map((item, index)=><RenderLink item={item} key={index} index={index} onClick={closingFun} forMobile/>)}
         </div>
         }   
              <div className="fixPos"  style={{ backgroundColor: '#fff0', width: BRGR_BTN_WID, height: BRGR_BTN_WID , top: BRGR_MRGN - BRGR_BTN_WID/2, right: BRGR_MRGN-BRGR_BTN_WID/2, zIndex: 4}}>
                     <BurgerMenu ref={burgerRef} clickFun={()=>{
                 setBurgerOpened(!burgerOpened)}}/>
                     </div>
-            </div> */}
+            </div>
         </div>
     
         )

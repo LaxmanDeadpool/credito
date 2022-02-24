@@ -5,14 +5,26 @@ import playStore from '../icons/playStore.svg'
 import appStore from '../icons/appStore.svg'
 import qr from '../icons/qrCode.svg'
 import crossIcon from '../icons/crossIcon.svg'
-
+import {a, useSpring, config} from 'react-spring';
+import { useEffect } from "react";
 
 export default function PopUpComp({close}) {
   const { mainString, placeHolderNo, qrCodeText } = popUpStrings;
-    
+    const [style, setStyle] = useSpring(()=>({
+      scale: 0,
+      opacity: 0,
+      config: config.wobbly
+    }))
+  useEffect(()=>{
+    console.log('acalfjal')
+    setStyle.start({
+      opacity: 1,
+      scale: 1
+    })
+  }, [])
   return (
     <div style={{zIndex: 1000}} className="jc fixPos allPopUpBg f">
-    <div  className="f popUpCont ac jc absPos">
+    <a.div style={style} className="f popUpCont ac jc absPos">
       <div style={{gap: '1em'}} className="f fc">
         <h2 dangerouslySetInnerHTML={mainString} />
         <div className="f phoneNoCont ac jc">
@@ -33,7 +45,7 @@ export default function PopUpComp({close}) {
       </div>
 
       <img onClick={close} src={crossIcon} className='f ac jc crossIcon absPos' />
-    </div>
+    </a.div>
     </div>
   );
 }

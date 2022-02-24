@@ -2,8 +2,8 @@ import { imageMockups } from "../data/Strings";
 import { a, useSprings } from "react-spring";
 import { useEffect, useRef } from "react";
 export default function SecondPage() {
-  const data = [...imageMockups, ...imageMockups];
-  const isApiCalled = useRef(false);
+  const data = imageMockups;
+
   const [springs, api] = useSprings(
     data.length,
     i=>({
@@ -33,24 +33,17 @@ setTimeout(() => {
   }, []);
 
   return (
-    <div className="f imagesCont">
+    <div className="f imagesCont fullPg ac">
       {springs.map((animation, index) => (
         <a.img
             key={index}
-          style={{ zIndex: 10 - index, ...animation }}
+          style={{ zIndex: data.length + 5 - index, ...animation }}
           className="mockUpImage"
           src={data[index]}
         />
       ))}
 
-      {/* {[...imageMockups, ...imageMockups].map((item, index)=>{ return <RenderImage key={index} img={item} index={index}/>
-        })} */}
     </div>
   );
 }
 
-const RenderImage = ({ img, index }) => {
-  return (
-    <a.img style={{ zIndex: 10 - index }} className="mockUpImage" src={img} />
-  );
-};

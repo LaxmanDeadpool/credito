@@ -35,7 +35,7 @@ html {
 .navBar{
   width: 100vw;
   padding: 1em;
-  height: 4em;
+  height: 4.5em;
   background-color: var(--creditoBgTp);
   backdrop-filter: blur(var(--blurAmount));
 }
@@ -62,7 +62,7 @@ html {
   justify-content: center;
 }
 .firstPgHeading{
-  font-size: 7.5em;
+  font-size: clamp( 3em, 7.8vw, 7.5em );
   text-align: center;
   opacity: 0;
   line-height: 80%;
@@ -73,10 +73,14 @@ html {
   line-height: 100%;
   transform: translateY(0);
   opacity: 0.5;
+ 
 }
 .firstPgSubheading{
-  font-size: 2.5em;
-  opacity: 0;
+  font-size: clamp( 1.5em, 2.6vw, 2.5em );
+  opacity: 0; 
+  text-align: center;
+  margin-top: 0.8em;
+  font-weight: normal;
   transition: all 1s ease-out;
 }
 .firstPgHeadingFulOpacity{
@@ -155,6 +159,9 @@ p{
   border: none;
   margin-right: 2em;
 }
+.menuOnSmallScreen{
+  display: none;
+}
 .navLink{
   /* color: var(--creditoBrightColor); */
   font-size: 1.25em;
@@ -173,20 +180,20 @@ p{
   left: 0
 }
 .mockUpImage{
-  min-width: 20vw;
+  height: 70vh;
+  flex-shrink: 0;
   overflow-x: scroll;
 }
 .imagesCont{
   overflow-x: scroll;
-  width: 100vw;
   gap: 2vw;
   padding: 5vw 2vw;
   background-color: var(--creditoBrightColor);
 }
 .logo{
-  width: 4vw;
-  top: .5em;
-  left: 2em
+  width: 3vw;
+  min-width: 40px;
+
 }
 .sb{
   justify-content: space-between;
@@ -211,4 +218,71 @@ p{
   caret-color: 'white';
   background-color: transparent;
   /* width: var(--inputContWid); */
+}
+.overlayMenu{
+  background-color: var(--creditoBrightColor);
+  transform-origin: 50% 50%;
+  border-radius: 50%;
+}
+.navLinkCont{
+
+  gap: 2em;
+  z-index: 4;
+  top: 0;
+  left: 0;
+}
+.faqCont{
+  width: 80vw;
+  max-width: 800px;
+  margin-left: 5em;
+}
+.faq-title{
+  margin-top: 2em;
+}
+.styles_faq-row-wrapper__3vA1D .styles_faq-row__2YF3c{
+  border-bottom: 1px solid #fff2;
+}
+.parallaxStaticSection{
+    width: 50vw;
+    background-color: tan;
+    height: 100vh;
+    margin-left: 50vw;
+    overflow: hidden;
+}
+.parallaxMovingSection{
+  width: 50vw;
+  background-color: teal;
+  height: 100vh;
+  padding: 5%;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.parallaxImage{
+  height: 70vh;
+  min-height: 500px;
+}
+.parallaxImgCont{
+  width: 35vh;
+  min-width: 250px;
+  overflow-x: scroll;
+  gap: 50px;
+  background-color: turquoise;
+}
+
+@media only screen and (max-width: 500px) {
+  .menuOnBigScreen{
+    display: none;
+  }
+  .menuOnSmallScreen{
+    display: block;
+  }
+  .topBarBtn{
+    right: 40px;
+  }
+  .navLinkCont{
+    gap: 1em !important;
+  }
+  .navLink{
+    font-size: 2em !important;
+  }
 }
