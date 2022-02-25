@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/credito/static/css/main.dc016f35.css",
-    "main.js": "/credito/static/js/main.511a21b4.js",
+    "main.css": "/credito/static/css/main.6c4dfe75.css",
+    "main.js": "/credito/static/js/main.1133c213.js",
     "static/js/787.28cb0dcd.chunk.js": "/credito/static/js/787.28cb0dcd.chunk.js",
     "static/media/img.png": "/credito/static/media/img.c577f2ba10d3a9828f2d.png",
     "static/media/logo.svg": "/credito/static/media/logo.e71e15aca63eb5691332214d221d4e1e.svg",
@@ -11,12 +11,12 @@
     "index.html": "/credito/index.html",
     "static/media/crossIcon.svg": "/credito/static/media/crossIcon.93cf1e0081dfed3dd76adc24107ee2f8.svg",
     "static/media/arrowRight.svg": "/credito/static/media/arrowRight.aa23c2d548e872a7b7aa5f980bbd7ef1.svg",
-    "main.dc016f35.css.map": "/credito/static/css/main.dc016f35.css.map",
-    "main.511a21b4.js.map": "/credito/static/js/main.511a21b4.js.map",
+    "main.6c4dfe75.css.map": "/credito/static/css/main.6c4dfe75.css.map",
+    "main.1133c213.js.map": "/credito/static/js/main.1133c213.js.map",
     "787.28cb0dcd.chunk.js.map": "/credito/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc016f35.css",
-    "static/js/main.511a21b4.js"
+    "static/css/main.6c4dfe75.css",
+    "static/js/main.1133c213.js"
   ]
 }
