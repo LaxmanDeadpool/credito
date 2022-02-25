@@ -4,8 +4,12 @@ import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "re
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import useOnScreen from "../hooks/useOnScreen"
 import { a, useSpring } from "react-spring"
+import FirstPage from "./FirstPage"
+import FaqComp from "./FaqComp"
 
 export default function ParallaxPreview() {
+    const pagesBeforeThis = 1;
+    const pagesAfterThis = 1;
     let len = parallaxLayersData.length
     const images = parallaxLayersData.map(i => i.image)
     const staticSectionRef=useRef();
@@ -13,26 +17,33 @@ export default function ParallaxPreview() {
     const changeIndex=index=>staticSectionRef.current.scrollIntoViewItem(index);
 
     return <div className="fullPg">
-        <Parallax pages={len}>
-            <ParallaxLayer sticky={{ start: 0, end: 5 }}>
+        <Parallax pages={len + pagesBeforeThis + pagesBeforeThis}>
+            <ParallaxLayer offset={0} speed={.1}>
+                <FirstPage/>
+            </ParallaxLayer>
+            <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis -1 }}>
                 <RederRightSection ref={staticSectionRef} images={images}/>
                 {/* <div className="ac jc f parallaxStaticSection">
                     <PI key={'A'} img={images} style={sis} />
                 </div> */}
             </ParallaxLayer>
 
-            {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index} speed={0} key={index}>
+            {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
                 <RenderLeftSection changeIndex={()=>changeIndex(index)} index={index} item={i} />
             </ParallaxLayer>)}
+
+            <ParallaxLayer offset={len + pagesBeforeThis}>
+                <FaqComp/>
+            </ParallaxLayer>
         </Parallax>
     </div>
 }
 
 const RenderLeftSection = ({ item, index, changeIndex }) => {
     const itemRef = useRef();
-    const [animStyle, setAnimStyle] = useSpring(() => ({ opacity: 0, scale: 0 }))
+    const [animStyle, setAnimStyle] = useSpring(() => ({ opacity: 0, }))
     const comeInView = value => {
-        setAnimStyle.start({ opacity: value ? 1 : 0, scale: value ? 1 : 0, delay: 300 })
+        setAnimStyle.start({ opacity: value ? 1 : 0, delay: 100 })
         if(value)
         changeIndex();
     }

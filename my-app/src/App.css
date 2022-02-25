@@ -13,6 +13,7 @@
   --greyBg: #fff3;
   --creditoGreen: #82D89A;
   --blurAmount: 20px;
+
 }
 
 html {
@@ -38,6 +39,7 @@ html {
   height: 4.5em;
   background-color: var(--creditoBgTp);
   backdrop-filter: blur(var(--blurAmount));
+  top: 0
 }
 .fixPos{
   position: fixed;
@@ -244,7 +246,7 @@ p{
 }
 .parallaxStaticSection{
     width: 50vw;
-    background-color: tan;
+    /* background-color: tan; */
     height: 100vh;
     margin-left: 50vw;
     overflow: hidden;
@@ -264,9 +266,9 @@ p{
 .parallaxImgCont{
   width: 35vh;
   min-width: 250px;
-  overflow-x: scroll;
+  overflow-x: hidden;
   gap: 50px;
-  background-color: turquoise;
+  /* background-color: turquoise; */
 }
 
 @media only screen and (max-width: 500px) {
