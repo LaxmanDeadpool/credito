@@ -30,7 +30,7 @@ html {
   color: var(--mainTextColor);
   margin: 0; padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 .navBar{
@@ -127,27 +127,33 @@ p{
 .popUpCont{
   background-color: var(--greyBg);
   gap: 2em;
-  padding: 3em 3.5em;
+  padding: 3em 4em 2.8em 4em;
   margin-top: 4em;
   border-radius: 3em;
 }
 
 .crossIcon{
-  background-color: var(--creditoBg);
+  /* background-color: var(--creditoBg); */
   width: 2em;
   height: 2em;
   border-radius: 1em;
-  border: 1.5px solid #9F9FA1;
+  /* border: 1.5px solid #9F9FA1; */
   padding: .4em;
-  top: -1em;
-  right: 4em;
+  top: 1em;
+  right: 1em;
   cursor: pointer;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.2s;
 }
 .crossIcon:hover{
-  transform: rotate(270deg);
+  background-color: #0004;
 }
+.storeStickerCont{
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
 .allPopUpBg{
+  top: 0;
   width: 100vw;
   height: 100vh;
   background-color: #000a;
@@ -253,7 +259,7 @@ p{
 }
 .parallaxMovingSection{
   width: 50vw;
-  background-color: teal;
+  /* background-color: teal; */
   height: 100vh;
   padding: 5%;
   padding-top: auto;
@@ -270,8 +276,18 @@ p{
   gap: 50px;
   /* background-color: turquoise; */
 }
+.fullOpacity{
+  opacity: 1 !important;
+}
+.stickerImage{
+  height: 3.5em;
+  cursor: pointer;
+}
+.appStores{
+  gap: 1em
+}
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 620px) {
   .menuOnBigScreen{
     display: none;
   }
@@ -287,4 +303,10 @@ p{
   .navLink{
     font-size: 2em !important;
   }
+  .faqCont{
+    margin-left: 1em;
+    width: calc(100vw - 2em);
+  }
+
+
 }

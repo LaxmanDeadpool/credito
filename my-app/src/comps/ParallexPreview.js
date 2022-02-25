@@ -7,7 +7,7 @@ import { a, useSpring } from "react-spring"
 import FirstPage from "./FirstPage"
 import FaqComp from "./FaqComp"
 
-export default function ParallaxPreview() {
+export default function ParallaxPreview({open}) {
     const pagesBeforeThis = 1;
     const pagesAfterThis = 1;
     let len = parallaxLayersData.length
@@ -17,9 +17,9 @@ export default function ParallaxPreview() {
     const changeIndex=index=>staticSectionRef.current.scrollIntoViewItem(index);
 
     return <div className="fullPg">
-        <Parallax pages={len + pagesBeforeThis + pagesBeforeThis}>
+        <Parallax pages={len + pagesBeforeThis + pagesAfterThis}>
             <ParallaxLayer offset={0} speed={.1}>
-                <FirstPage/>
+                <FirstPage open={open}/>
             </ParallaxLayer>
             <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis -1 }}>
                 <RederRightSection ref={staticSectionRef} images={images}/>

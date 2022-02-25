@@ -41,7 +41,7 @@ export const parallaxLayersData=[
 export const popUpStrings={
     mainString: {__html: "Enter your phone number<br/>to get a downlaod link via SMS"},
     placeHolderNo: "+91-999 999 9999",
-    qrCodeText: {__html: "Alternatively, scan the QR in you phone to get the app."},
+    qrCodeText: {__html: "Scan the QR code to get the app."},
 }
 
 export const navStrings={

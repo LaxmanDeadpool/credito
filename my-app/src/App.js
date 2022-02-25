@@ -14,6 +14,8 @@ function App() {
 const [showPopUp, setShowPopUp] = useState(false);
 const isMobileDevice=useRef();
 
+
+
 useEffect(()=>{
   let details = navigator.userAgent;
   let regexp = /android|iphone|kindle|ipad/i;
@@ -22,7 +24,7 @@ useEffect(()=>{
 }, [])
 
 const btnPress=(operation)=>{
-  console.log(isMobileDevice.current)
+
   if(!isMobileDevice.current){
     setShowPopUp(operation);
   }
@@ -62,9 +64,8 @@ const btnPress=(operation)=>{
   {/* </ParallaxLayer>
   </Parallax> */}
 
-
+  <ParallaxPreview open={()=>btnPress(true)}/>
   {/* <FaqComp/> */}
-  <ParallaxPreview/>
   <Navbar showPopUp={()=>btnPress(true)}/>
   <div style={{height: '4.5em', left: '2em', top: 0}} className='f ac fixPos'>
   <img className='fixPos f logo ac jc' src={logo}/>
