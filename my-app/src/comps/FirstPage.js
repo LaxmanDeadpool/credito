@@ -4,7 +4,7 @@ import appStore from '../appStorePlayStoreStickers/appStoreS.svg'
 import playStore from '../appStorePlayStoreStickers/playStoreS.svg'
 import qrCodeIcon from '../icons/qrCodeIcon.svg'
 
- const FirstPage = ({open}) => {
+ const FirstPage = ({open,  noUseEffect }) => {
     const {introPage} = firstPgStrings;
     const headerRef = useRef();
     const stickerRef = useRef();
@@ -38,15 +38,15 @@ import qrCodeIcon from '../icons/qrCodeIcon.svg'
             qrRef.current.style.display = "none"
         }
 
-            headerRef.current.classList.add('firstPgHeadingFinal');
+            headerRef.current?.classList.add('firstPgHeadingFinal');
         setTimeout(() => {
-            headerRef.current.classList.add('firstPgHeadingFulOpacity')
+            headerRef.current?.classList.add('firstPgHeadingFulOpacity')
         }, 800);
         setTimeout(() => {
-            subHeadingRef.current.classList.add('firstPgHeadingFulOpacity')
-            stickerRef.current.classList.add('fullOpacity')
+            subHeadingRef.current?.classList.add('firstPgHeadingFulOpacity')
+            stickerRef.current?.classList.add('fullOpacity')
         }, 1000);
-    })
+    }, [])
     
     return <div style={{paddingLeft: '1em', paddingRight: '1em'}} className="f fullPg ac jc fc">
         <h1 ref={headerRef} className='firstPgHeading' dangerouslySetInnerHTML={introPage.heading}/>
@@ -54,7 +54,7 @@ import qrCodeIcon from '../icons/qrCodeIcon.svg'
         <div ref={stickerRef} style={{gap: '1em', marginTop: '3em'}} className='f ac storeStickerCont '>
             <img ref={appStoreRef} className='stickerImage' src={appStore}/>
             <img ref={playStoreRef} className='stickerImage' src={playStore}/>
-            <img qrRef={qrRef} onClick={open} className='stickerImage' style={{ height: '2.5em', marginLeft: '1em'}} src={qrCodeIcon}/>
+            <img ref={qrRef} onClick={open} className='stickerImage' style={{ height: '2.5em', marginLeft: '1em'}} src={qrCodeIcon}/>
         </div>
     </div> 
 }

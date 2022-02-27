@@ -6,14 +6,7 @@ export const firstPgStrings={
 }
 
 
-export const imageMockups=[
-    require('../mockUps/img.png'),
-    require('../mockUps/img.png'),
-    require('../mockUps/img.png'),
-    require('../mockUps/img.png'),
-    require('../mockUps/img.png'),
-    require('../mockUps/img.png'),
-]
+
 
 export const parallaxLayersData=[
     {
@@ -127,3 +120,15 @@ export const faqSection=[
         ]
     }
 ]
+
+export const contactSection={
+    contactData: {
+            email: 'example@email.com',
+            phone: '+91 888 888 8888'
+        },
+    social: [
+        { url: "linkedIn.com" },
+        { url: "facebook.com" },
+        { url: "instagram.com" },
+    ]
+}

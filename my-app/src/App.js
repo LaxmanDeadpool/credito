@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import FirstPage from './comps/FirstPage';
 import Navbar from './comps/NavBar';
-import SecondPage from './comps/SecondPage';
+
 import PopUpComp from './comps/PopUpComp';
 import FaqComp from './comps/FaqComp';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import ParallaxPreview from './comps/ParallexPreview';
 import './App.css';
 import { useEffect, useState, useRef } from 'react';
+import ContactComp from './comps/ContactComp';
 
 function App() {
 
@@ -66,6 +67,8 @@ const btnPress=(operation)=>{
 
   <ParallaxPreview open={()=>btnPress(true)}/>
   {/* <FaqComp/> */}
+
+  {/* <ContactComp/> */}
   <Navbar showPopUp={()=>btnPress(true)}/>
   <div style={{height: '4.5em', left: '2em', top: 0}} className='f ac fixPos'>
   <img className='fixPos f logo ac jc' src={logo}/>

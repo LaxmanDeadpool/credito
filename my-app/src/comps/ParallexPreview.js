@@ -6,40 +6,87 @@ import useOnScreen from "../hooks/useOnScreen"
 import { a, useSpring } from "react-spring"
 import FirstPage from "./FirstPage"
 import FaqComp from "./FaqComp"
+import ContactComp from "./ContactComp"
 
 export default function ParallaxPreview({open}) {
     const pagesBeforeThis = 1;
-    const pagesAfterThis = 1;
+
     let len = parallaxLayersData.length
     const images = parallaxLayersData.map(i => i.image)
     const staticSectionRef=useRef();
 
     const changeIndex=index=>staticSectionRef.current.scrollIntoViewItem(index);
 
-    return <div className="fullPg">
-        <Parallax pages={len + pagesBeforeThis + pagesAfterThis}>
-            <ParallaxLayer offset={0} speed={.1}>
-                <FirstPage open={open}/>
-            </ParallaxLayer>
-            <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis -1 }}>
-                <RederRightSection ref={staticSectionRef} images={images}/>
-                {/* <div className="ac jc f parallaxStaticSection">
-                    <PI key={'A'} img={images} style={sis} />
-                </div> */}
-            </ParallaxLayer>
+    // const contactFactor = 0;
+    // const faqHfactor = 1
+    const [contactFactor, setCF] = useState(.5);
+    const [faqHfactor, setH] = useState(1);
+    const contactCorrected = useRef(false);
+    const faqCorrected = useRef(false);
+    const [render, rerender] = useState(false);
 
-            {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
-                <RenderLeftSection changeIndex={()=>changeIndex(index)} index={index} item={i} />
-            </ParallaxLayer>)}
+    const setFaqH=h=>{
+        setH(h);
+        // faqHfactor = h
+        // faqCorrected.current = true
+        // // if(contactCorrected.current)
+        // rerender(true)
+    }
+    const setContactH=h=>{
+        setCF(h);
+        // contactFactor=h
+        // contactCorrected.current=true
+        // if(faqCorrected.current)
+        // rerender(true)
+    }
 
-            <ParallaxLayer offset={len + pagesBeforeThis}>
-                <FaqComp/>
-            </ParallaxLayer>
-        </Parallax>
-    </div>
+    return <div className="fullPg"> 
+{ 
+(faqHfactor===1 || contactFactor===.5)?   <>  <Parallax pages={len + pagesBeforeThis + faqHfactor + contactFactor}>
+<ParallaxLayer factor={2} offset={0} speed={.1}>
+    <FirstPage open={open}/>
+</ParallaxLayer>
+<ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis -1 }}>
+    <RederRightSection ref={staticSectionRef} images={images}/>
+</ParallaxLayer> 
+{parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
+    <RenderLeftSection noObserver changeIndex={()=>changeIndex(index)} index={index} item={i} />
+</ParallaxLayer>)}
+
+<ParallaxLayer factor={faqHfactor} offset={len + pagesBeforeThis}>
+    <FaqComp setHeight={setFaqH}/>
+</ParallaxLayer>
+
+<ParallaxLayer factor={contactFactor} offset={len + pagesBeforeThis + faqHfactor}>
+    <ContactComp setHgt={setContactH}/>
+</ParallaxLayer>
+</Parallax> </> : <>
+<Parallax pages={len + pagesBeforeThis + faqHfactor + contactFactor}>
+        <ParallaxLayer factor={2} offset={0} speed={.1}>
+            <FirstPage noUseEffect open={open}/>
+        </ParallaxLayer>
+ <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis -1 }}>
+            <RederRightSection ref={staticSectionRef} images={images}/>
+        </ParallaxLayer> 
+        {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
+            <RenderLeftSection changeIndex={()=>changeIndex(index)} index={index} item={i} />
+        </ParallaxLayer>)}
+
+<ParallaxLayer factor={faqHfactor} offset={len + pagesBeforeThis}>
+            <FaqComp setHeight={()=>{}}/>
+        </ParallaxLayer>
+        
+        <ParallaxLayer factor={contactFactor} offset={len + pagesBeforeThis + faqHfactor }>
+            <ContactComp setHgt={()=>{}}/>
+        </ParallaxLayer>
+    </Parallax></>
+}
+</div>
+
+
 }
 
-const RenderLeftSection = ({ item, index, changeIndex }) => {
+const RenderLeftSection = ({ item, index, changeIndex, noObserver=false }) => {
     const itemRef = useRef();
     const [animStyle, setAnimStyle] = useSpring(() => ({ opacity: 0, }))
     const comeInView = value => {
@@ -47,7 +94,8 @@ const RenderLeftSection = ({ item, index, changeIndex }) => {
         if(value)
         changeIndex();
     }
-    useOnScreen(itemRef, comeInView, .6)
+ 
+    useOnScreen(itemRef, comeInView, .6, noObserver)
     return <div ref={itemRef} className='f fc ac jc parallaxMovingSection'>
         <a.div style={animStyle} className='f fc'>
             <h2>{item.title}</h2>
@@ -81,24 +129,3 @@ const RederRightSection=forwardRef(({images}, ref)=>{
     </div>
 })
 
-const PI = ({ style, index }) => {
-    const ref = useRef();
-    const fun = val => console.log(`element ${index} is ovserved as ${val}`)
-    useOnScreen(ref, fun, .2)
-    return <div ref={ref} style={style} />
-}
-
-const mis = {
-    width: 100,
-    height: 100,
-
-    background: 'tomato',
-}
-
-const sis = {
-    marginRight: 100,
-    width: 100,
-    height: 100,
-    background: 'yellow',
-    // marginRight: 500
-}

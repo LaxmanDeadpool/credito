@@ -173,6 +173,8 @@ p{
 .navLink{
   /* color: var(--creditoBrightColor); */
   font-size: 1.25em;
+}
+a{
   text-decoration: none;
 }
 .absPos{
@@ -286,6 +288,30 @@ p{
 .appStores{
   gap: 1em
 }
+.contactCont{
+  width: 100vw;
+  background-color: white;
+  padding: 3em 10vw;
+  z-index: 10
+}
+.contactCont *{
+  color: black
+}
+.socialMediaImg{
+  height: 1.25em;
+  cursor: pointer;
+}
+.infoCont{
+  width: 50vw;
+  /* background-color: rebeccapurple; */
+  margin-left: auto;
+  margin-right: 10vw;
+  justify-content: space-evenly;
+}
+.socialP{
+  opacity: .6;
+  margin-bottom: .8em;
+}
 
 @media only screen and (max-width: 620px) {
   .menuOnBigScreen{
@@ -307,6 +333,21 @@ p{
     margin-left: 1em;
     width: calc(100vw - 2em);
   }
-
+  .contactCont{
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: rebeccapurple; */
+  }
+  .infoCont{
+    margin-left: 0;
+    /* background-color: tan; */
+    margin-top: 1em;
+    margin-right: auto;
+    justify-content: flex-start;
+    gap: 15vw
+  }
+  .socialP{
+    margin-bottom: .6em;
+  }
 
 }
