@@ -100,7 +100,7 @@ const RenderLeftSection = ({ item, index, changeIndex, noObserver = false }) => 
             changeIndex();
     }
 
-
+    useOnScreen(itemRef, comeInView, .6, noObserver)
     return <div ref={itemRef} className='f fc ac jc parallaxMovingSection'>
         <a.div style={animStyle} className='f fc'>
             <h2>{item.title}</h2>
@@ -126,20 +126,17 @@ const RederRightSection = forwardRef(({ images, navMove }, ref) => {
 
     const pgRf = useRef();
 
-    const comeInView=(isTrue)=>{
-        if(isTrue)
-        navMove(1);
-    }
-
-    useOnScreen(pgRf, comeInView, .8)
 
 
     useImperativeHandle(ref, () => {
         return { scrollIntoViewItem }
     })
 
-    return <div ref={pgRf} className="f fullPg ac jc parallaxStaticSection">
-        <a.div scrollLeft={scroll} className="f parallaxImgCont">{images.map((i, j) => <img key={j} className="parallaxImage" src={i} />)}</a.div>
+    return <div ref={pgRf} className="f fullPg relPos ac jc parallaxStaticSection">
+        
+        <a.div scrollLeft={scroll} className="f absPos parallaxImgCont">{images.map((i, j) => <img key={j} className="parallaxImage" src={i} />)}</a.div>
+
+        <img src={require('../mockUps/frame.png')} className="asbPos imgFrame"/>
     </div>
 })
 

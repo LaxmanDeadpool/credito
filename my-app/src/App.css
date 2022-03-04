@@ -268,8 +268,14 @@ a{
   padding-bottom: auto;
 }
 .parallaxImage{
+  width: 35vh;
+  min-width: 250px;
+}
+.imgFrame{
+  width: 35vh;
   height: 70vh;
-  min-height: 500px;
+  min-width: 250px;
+  z-index: 1;
 }
 .parallaxImgCont{
   width: 35vh;
