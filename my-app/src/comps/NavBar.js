@@ -5,7 +5,7 @@ import {a, useSpring, config} from 'react-spring';
 const BRGR_MRGN = 40;
 const BRGR_BTN_WID = 25;
 
-const Navbar=forwardRef(({showPopUp}, ref)=>{
+const Navbar=forwardRef(({showPopUp, scrollTo}, ref)=>{
     
     const {middleTitles, buttonText} = navStrings;
     const linkWids = useRef(new Array(middleTitles.length));
@@ -42,20 +42,10 @@ const Navbar=forwardRef(({showPopUp}, ref)=>{
             width: linkWids.current[index].wid,
             x: linkWids.current[index].x,
         })
+
+        scrollTo(index)
     
     }
-    
-    // const scrollingFun=(nextVal, preVal, progress)=>{
-        
-    //     setAnimatedStyle.start({
-    //         width: linkWids.current[i].wid,
-    //         x: linkWids.current[index].x
-    //     })
-    // }
-
-    // useImperativeHandle(ref, ()=>({
-    //     scrollingFun,
-    // }))
     
     const [burgerOpened, setBurgerOpened] = useState(false);
     const burgerStyle = useSpring({
@@ -73,6 +63,10 @@ const Navbar=forwardRef(({showPopUp}, ref)=>{
         burgerRef.current.click();
         setBurgerOpened(false);
     }
+
+    useImperativeHandle(ref, ()=>({
+        onClick
+    }))
     
         return(
             <div className="f fixPos navBar jc">
@@ -169,9 +163,6 @@ const BurgerMenu= forwardRef(({clickFun}, ref)=> {
     clickFun();
     }
 
-    useImperativeHandle(ref, ()=>({
-        click
-    }))
 
  return <div style={{width: wid, height: wid}} onClick={click} className="relPos">
      <a.div className='centerOrigin' style={{...lineStyle, ...line1}}/>

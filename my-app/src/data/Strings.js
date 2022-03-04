@@ -48,7 +48,7 @@ export const navStrings={
             id: 'features'
         },
         {
-            name: 'About Us',
+            name: 'FaQ',
             id: 'about'
         },
         {
@@ -132,3 +132,42 @@ export const contactSection={
         { url: "instagram.com" },
     ]
 }
+
+export const finalPgSections=[
+    {
+        title: 'Policy',
+        content: [
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+        ]
+    },
+    {
+        title: 'Policy',
+        content: [
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+        ]
+    },
+    {
+        title: 'Policy',
+        content: [
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+        ]
+    },
+    {
+        title: 'Policy',
+        content: [
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+            {title: 'policy 1', link: 'www.google.com'},
+        ]
+    }
+]

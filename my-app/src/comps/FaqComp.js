@@ -2,7 +2,8 @@ import { faqSection } from "../data/Strings"
 import Faq from "react-faq-component";
 import arrowIcon from '../icons/arrowRight.svg'
 import { useEffect, useRef } from "react";
-export default function FaqComp({ setHeight }) {
+import useOnScreen from "../hooks/useOnScreen";
+export default function FaqComp({ setHeight, navMove }) {
 
     const isHeightSet = useRef(false);
     const divRef = useRef();
@@ -11,9 +12,12 @@ export default function FaqComp({ setHeight }) {
             setHeight(divRef.current.offsetHeight / window.innerHeight)
             isHeightSet.current = true
         }
+        divRef.current.parentNode.style.zIndex=-1
     }, [])
 
-    return <div ref={divRef} className="f fc faqCont">
+
+
+    return <div style={{zIndex: -1}} ref={divRef} className="f fc faqCont">
         <div style={{ minHeight: '4.5em' }} />
         <h2>Frequently asked questions</h2>
         {faqSection.map((i, index) => <FaqsComp item={i} key={index} />)}

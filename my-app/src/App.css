@@ -187,6 +187,7 @@ a{
   border-bottom-left-radius: var(--thinLineDimension);
   border-bottom-right-radius: var(--thinLineDimension);
   bottom: calc( 0px - var(--thinLineDimension) );
+  margin-bottom: 5px;
   left: 0
 }
 .mockUpImage{
@@ -203,7 +204,6 @@ a{
 .logo{
   width: 3vw;
   min-width: 40px;
-
 }
 .sb{
   justify-content: space-between;
@@ -292,7 +292,6 @@ a{
   width: 100vw;
   background-color: white;
   padding: 3em 10vw;
-  z-index: 10
 }
 .contactCont *{
   color: black
@@ -311,6 +310,12 @@ a{
 .socialP{
   opacity: .6;
   margin-bottom: .8em;
+}
+.contactSectionUpper{
+
+  width: 100%;
+  column-gap: 8em;
+  row-gap: 4em;
 }
 
 @media only screen and (max-width: 620px) {
@@ -333,7 +338,7 @@ a{
     margin-left: 1em;
     width: calc(100vw - 2em);
   }
-  .contactCont{
+  .contactBottomCont{
     flex-direction: column;
     align-items: flex-start;
     /* background-color: rebeccapurple; */

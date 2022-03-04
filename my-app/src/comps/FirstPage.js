@@ -3,8 +3,9 @@ import { firstPgStrings } from "../data/Strings"
 import appStore from '../appStorePlayStoreStickers/appStoreS.svg'
 import playStore from '../appStorePlayStoreStickers/playStoreS.svg'
 import qrCodeIcon from '../icons/qrCodeIcon.svg'
+import useOnScreen from '../hooks/useOnScreen'
 
- const FirstPage = ({open,  noUseEffect }) => {
+ const FirstPage = ({open, navMove }) => {
     const {introPage} = firstPgStrings;
     const headerRef = useRef();
     const stickerRef = useRef();
@@ -12,6 +13,7 @@ import qrCodeIcon from '../icons/qrCodeIcon.svg'
     const appStoreRef=useRef();
     const playStoreRef=useRef();
     const qrRef = useRef();
+    const pgRf = useRef();
 
     function getMobileOperatingSystem() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -26,6 +28,8 @@ import qrCodeIcon from '../icons/qrCodeIcon.svg'
       
         return "unknown";
       }
+
+
 
     useEffect(()=>{
         let os = getMobileOperatingSystem();
@@ -48,7 +52,7 @@ import qrCodeIcon from '../icons/qrCodeIcon.svg'
         }, 1000);
     }, [])
     
-    return <div style={{paddingLeft: '1em', paddingRight: '1em'}} className="f fullPg ac jc fc">
+    return <div ref={pgRf} style={{paddingLeft: '1em', paddingRight: '1em'}} className="f fullPg ac jc fc">
         <h1 ref={headerRef} className='firstPgHeading' dangerouslySetInnerHTML={introPage.heading}/>
         <h3 className='firstPgSubheading' ref={subHeadingRef} dangerouslySetInnerHTML={introPage.subHeading} />
         <div ref={stickerRef} style={{gap: '1em', marginTop: '3em'}} className='f ac storeStickerCont '>
