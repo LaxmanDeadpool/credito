@@ -93,18 +93,20 @@ export default ParallaxPreview
 
 const RenderLeftSection = ({ item, index, changeIndex, noObserver = false }) => {
     const itemRef = useRef();
+    const ref=useRef();
     const [animStyle, setAnimStyle] = useSpring(() => ({ opacity: 0, }))
     const comeInView = value => {
         setAnimStyle.start({ opacity: value ? 1 : 0, delay: 100 })
         if (value)
             changeIndex();
     }
-
+    useEffect(()=>{
+        ref.current.innerHTML = item.title
+    }, [])
     useOnScreen(itemRef, comeInView, .6, noObserver)
     return <div ref={itemRef} className='f fc ac jc parallaxMovingSection'>
         <a.div style={animStyle} className='f fc'>
-            <h2>{item.title}</h2>
-            <p>{item.subtitle}</p>
+            <h2 className='imgTitle' ref={ref}/>
         </a.div>
 
     </div>
@@ -125,9 +127,6 @@ const RederRightSection = forwardRef(({ images, navMove }, ref) => {
     }
 
     const pgRf = useRef();
-
-
-
     useImperativeHandle(ref, () => {
         return { scrollIntoViewItem }
     })

@@ -10,24 +10,24 @@ export const firstPgStrings={
 
 export const parallaxLayersData=[
     {
-        title: 'lorem ipsum some title is here',
-        subtitle: 'lorem ipsum some subtile is here 🎉👀 Our app is very very good app. You have to download it.',
-        image: require('../mockUps/img.png')
+        title: 'Build your community to <span>Share Cards</span>',
+        image: require('../mockUps/connection.png')
     },
     {
-        title: 'lorem ipsum some title is here',
-        subtitle: 'lorem ipsum some subtile is here 🎉👀 Our app is very very good app. You have to download it.',
-        image: require('../mockUps/img.png')
+        title: '<span>Record & Manage Transaction</span> with Friends easily',
+        image: require('../mockUps/activity.png')
     },
     {
-        title: 'lorem ipsum some title is here',
-        subtitle: 'lorem ipsum some subtile is here 🎉👀 Our app is very very good app. You have to download it.',
-        image: require('../mockUps/img.png')
+        title: 'Review & <span>Update Activities</span> you are involved in',
+        image: require('../mockUps/transaction.png')
     },
     {
-        title: 'lorem ipsum some title is here',
-        subtitle: 'lorem ipsum some subtile is here 🎉👀 Our app is very very good app. You have to download it.',
-        image: require('../mockUps/img.png')
+        title: 'View all the <span>Cards shared</span> by your connections',
+        image: require('../mockUps/wallet.png')
+    },
+    {
+        title: 'Look into <span>Transaction history</span> with a friend and his Cards',
+        image: require('../mockUps/friend.png')
     }
 ]
 

@@ -268,8 +268,7 @@ a{
   padding-bottom: auto;
 }
 .parallaxImage{
-  width: 35vh;
-  min-width: 250px;
+  width: 100%;
 }
 .imgFrame{
   width: 35vh;
@@ -324,6 +323,14 @@ a{
   row-gap: 4em;
 }
 
+.imgTitle{
+  font-size: 5rem;
+  margin-left: 1em;
+}
+.imgTitle span{
+  color: var(--textHighlight)
+}
+
 @media only screen and (max-width: 620px) {
   .menuOnBigScreen{
     display: none;
@@ -359,6 +366,33 @@ a{
   }
   .socialP{
     margin-bottom: .6em;
+  }
+  .parallaxMovingSection{
+    width: 30vw;
+  }
+  .parallaxStaticSection{
+    min-width: 100vw;
+    justify-content: flex-start;
+    margin-left: calc(30vw + 1em);
+    padding: 0;
+  }
+  .parallaxImgCont {
+    width: 60vw;
+    min-width: 60vw;
+  }
+  .parallaxImage{
+    width: 60vw;
+    min-width: 60vw;
+  }
+  .imgTitle{
+    font-size: 1.3rem;
+    line-height: 200%;
+    margin-left: 1em;
+  }
+  .imgFrame{
+    width: 60vw;
+    min-width: 60vw;
+    object-fit: contain;
   }
 
 }
