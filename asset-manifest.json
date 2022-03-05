@@ -1,10 +1,15 @@
 {
   "files": {
-    "main.css": "/credito/static/css/main.08d48db3.css",
-    "main.js": "/credito/static/js/main.eba5264b.js",
+    "main.css": "/credito/static/css/main.0c53851e.css",
+    "main.js": "/credito/static/js/main.35387130.js",
     "static/js/787.28cb0dcd.chunk.js": "/credito/static/js/787.28cb0dcd.chunk.js",
-    "static/media/img.png": "/credito/static/media/img.c577f2ba10d3a9828f2d.png",
+    "static/media/wallet.png": "/credito/static/media/wallet.908ecab5385e19793b14.png",
+    "static/media/activity.png": "/credito/static/media/activity.903b3466c31b887e07e4.png",
+    "static/media/connection.png": "/credito/static/media/connection.ea2be5df14c3dcb8dfef.png",
+    "static/media/friend.png": "/credito/static/media/friend.3608899a1b2beea0124b.png",
+    "static/media/transaction.png": "/credito/static/media/transaction.c5e00a6a3a800de106e0.png",
     "static/media/logo.svg": "/credito/static/media/logo.e71e15aca63eb5691332214d221d4e1e.svg",
+    "static/media/frame.png": "/credito/static/media/frame.2b343c771df1e50340f3.png",
     "static/media/qrCode.svg": "/credito/static/media/qrCode.6d4b0ca095bedd7f94f6a92c5074b6b8.svg",
     "static/media/appStoreS.svg": "/credito/static/media/appStoreS.c0a4de1d10d4f429fdfbe2384329e386.svg",
     "static/media/playStoreS.svg": "/credito/static/media/playStoreS.7ee019b8866a2e1b05a7fafddbc3ad0d.svg",
@@ -17,12 +22,12 @@
     "static/media/linkedIn.svg": "/credito/static/media/linkedIn.b3b9b97faf5b6bf9df0c101dacdc2eb0.svg",
     "static/media/crossIcon.svg": "/credito/static/media/crossIcon.7efdbdab36acce54592a3c92cc514360.svg",
     "static/media/arrowRight.svg": "/credito/static/media/arrowRight.aa23c2d548e872a7b7aa5f980bbd7ef1.svg",
-    "main.08d48db3.css.map": "/credito/static/css/main.08d48db3.css.map",
-    "main.eba5264b.js.map": "/credito/static/js/main.eba5264b.js.map",
+    "main.0c53851e.css.map": "/credito/static/css/main.0c53851e.css.map",
+    "main.35387130.js.map": "/credito/static/js/main.35387130.js.map",
     "787.28cb0dcd.chunk.js.map": "/credito/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.08d48db3.css",
-    "static/js/main.eba5264b.js"
+    "static/css/main.0c53851e.css",
+    "static/js/main.35387130.js"
   ]
 }
