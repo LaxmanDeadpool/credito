@@ -65,11 +65,12 @@ html {
 }
 .firstPgHeading{
   font-size: clamp( 3em, 7.8vw, 7.5em );
-  text-align: center;
+  /* text-align: center; */
   opacity: 0;
   line-height: 80%;
   transition: all 1s ease-out;
   transform: translateY(-20vh);
+  text-align: left;
 }
 
 .firstLine{
@@ -263,9 +264,17 @@ a{
 }
 .faq-title{
   margin-top: 2em;
+
+}
+.row-content-text{
+  line-height: 150% !important;
 }
 .styles_faq-row-wrapper__3vA1D .styles_faq-row__2YF3c{
   border-bottom: 1px solid #fff2;
+}
+.row-title-text{
+  color: var(--creditoBrightColor) !important;
+  font-weight: bold !important;
 }
 .parallaxStaticSection{
     width: 50vw;

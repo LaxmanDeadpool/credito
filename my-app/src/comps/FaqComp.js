@@ -18,10 +18,10 @@ export default function FaqComp({ setHeight, navMove }) {
 
 
     return <div style={{zIndex: -1}} ref={divRef} className="f fc faqCont">
-        <div style={{ minHeight: '4.5em' }} />
+        <div style={{ minHeight: '2em' }} />
         <h2>Frequently asked questions</h2>
         {faqSection.map((i, index) => <FaqsComp item={i} key={index} />)}
-        <div style={{ minHeight: '4.5em' }} />
+        <div style={{ minHeight: '7.5em' }} />
     </div>
 }
 
@@ -44,6 +44,7 @@ const styles = {
     rowTitleTextSize: '1em',
     rowContentTextSize: '.9em',
     rowContentPaddingBottom: '10px',
+
 };
 
 const config = {

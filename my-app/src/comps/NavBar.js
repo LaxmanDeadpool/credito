@@ -89,7 +89,10 @@ const Navbar=forwardRef(({showPopUp, scrollTo}, ref)=>{
     
         {
             burgerOpened && <div className="f fc fixPos ac jc navLinkCont fullPg">
-            {middleTitles.map((item, index)=><RenderLink item={item} key={index} index={index} onClick={closingFun} forMobile/>)}
+            {middleTitles.map((item, index)=><RenderLink item={item} key={index} index={index} onClick={()=>{
+                onClick(index)
+                closingFun()
+            }} forMobile/>)}
         </div>
         }   
              <div className="fixPos"  style={{ backgroundColor: '#fff0', width: BRGR_BTN_WID, height: BRGR_BTN_WID , top: BRGR_MRGN - BRGR_BTN_WID/2, right: BRGR_MRGN-BRGR_BTN_WID/2, zIndex: 4}}>
@@ -119,7 +122,7 @@ const RenderLink=({item, index, addWid, onClick, forMobile})=>{
     }, [])
 
     return(
-        <a.a href={`#${item.id}`} onClick={onClick} ref={itemRef} className="navLink" style={{...animStyle, zIndex: 3, fontSize: '1em', marginTop: '.6em'}}>{item.name}</a.a> 
+        <a.a onClick={onClick} ref={itemRef} className="navLink" style={{...animStyle, zIndex: 3, fontSize: '1em', marginTop: '.6em'}}>{item.name}</a.a> 
     )
 }
 
@@ -163,8 +166,9 @@ const BurgerMenu= forwardRef(({clickFun}, ref)=> {
     clickFun();
     }
 
+    useImperativeHandle(ref, ()=>({click}))
 
- return <div style={{width: wid, height: wid}} onClick={click} className="relPos">
+ return <div style={{width: wid, height: wid, top: -5}} onClick={click} className="relPos">
      <a.div className='centerOrigin' style={{...lineStyle, ...line1}}/>
      <a.div className='centerOrigin' style={{...lineStyle, ...line2}}/>
  </div> 
