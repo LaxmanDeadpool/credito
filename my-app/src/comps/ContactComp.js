@@ -19,18 +19,20 @@ export default function ContactComp({ setHgt, navMove }) {
 
 
 
-    return <div ref={itemRef} className="f fc contactCont">
+    return<> <div ref={itemRef} className="f fc contactCont">
 
-<div style={{ flexWrap: 'wrap' }} className="f contactSectionUpper">
+{/* <div style={{ flexWrap: 'wrap' }} className="f contactSectionUpper">
             {finalPgSections.map((item, index) => <div key={index} className="f fc">
                 <h4>{item.title}</h4>
                 {item.content.map((item, index) => <div key={index}>
                     <a href={item.link}>{item.title}</a>
                 </div>)}
             </div>)}
-        </div>
+        </div> */}
 
-        <div style={{marginTop: '2em'}} className="f ac contactBottomCont">
+        <div 
+        // style={{marginTop: '2em'}}
+         className="f ac contactBottomCont">
 
             <h2>Contact Us</h2>
             <div className="f infoCont">
@@ -51,5 +53,11 @@ export default function ContactComp({ setHgt, navMove }) {
             </div>
             </div>
     </div>
+<div style={{
+    width: '100%',
+    height: '100px',
+    background: 'white'
+}}/>
+    </>
 }
 

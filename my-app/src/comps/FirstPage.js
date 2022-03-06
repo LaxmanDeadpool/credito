@@ -54,6 +54,9 @@ import useOnScreen from '../hooks/useOnScreen'
     
     return <div ref={pgRf} style={{paddingLeft: '1em', paddingRight: '1em'}} className="f fullPg ac jc fc">
         <h1 ref={headerRef} className='firstPgHeading' dangerouslySetInnerHTML={introPage.heading}/>
+        {/* <pre className='firstLine fh'>Experience Next-Gen</pre>
+        <pre className='secondLine fh'><span className='highlight'>Card</span> Sharing With</pre>
+        <pre className='thirdLine'>Credito</pre> */}
         <h3 className='firstPgSubheading' ref={subHeadingRef} dangerouslySetInnerHTML={introPage.subHeading} />
         <div ref={stickerRef} style={{gap: '1em', marginTop: '3em'}} className='f ac storeStickerCont '>
             <img ref={appStoreRef} className='stickerImage' src={appStore}/>

@@ -29,8 +29,14 @@ const ParallaxPreview = forwardRef(({ open, navMoveTo }, forwardedRef) => {
         setCF(h);
     }
 
+    const indexSet={
+        "0" : 0,
+        "1" : 1,
+        "2" : len+pagesBeforeThis,
+        "3" : len+pagesBeforeThis+faqHfactor
+    }
     const moveTo = (index) => {
-        prallaxRf.current.scrollTo(index)
+        prallaxRf.current.scrollTo(indexSet[`${index}`])
     }
 
     useImperativeHandle(forwardedRef, () => ({
@@ -38,8 +44,7 @@ const ParallaxPreview = forwardRef(({ open, navMoveTo }, forwardedRef) => {
     }))
 
     const navMove=index=>{
-        console.log('called', index)
-        navMove(index);
+        navMove(indexSet[`${index}`]);
     }
 
     return <div className="fullPg">

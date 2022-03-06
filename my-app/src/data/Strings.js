@@ -1,6 +1,6 @@
 export const firstPgStrings={
     introPage: {
-        heading: {__html: 'Voluptates sint accusantium <span>distinctio</span> ut delectus et.'},
+        heading: {__html: 'Experience Next Gen<br/><span class="noHighlight"><span class="highlight">Card</span> Sharing with<span/><br/><span class="last noHighlight">Credio<span/>'},
         subHeading: {__html: 'Voluptates sint accusantium distinctio ut delectus et.'},
     }
 }
@@ -61,64 +61,26 @@ export const navStrings={
 
 export const faqSection=[
     {
-        title: 'First',
+        title: '',
         rows: [
             {
-                title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+                title: 'How everyone benefits from Credito',
+                content: 'One person cannot hold all the cards to capture benefits on them to maximise savings on his expenses.<br/>Therefore, easy visibility of cards in your wide network helps you grab deals.<br/>Card owner gets to increase the visibility of his card among closed network.<br/>Increased card sharing helps card owner to reach credit milestones faster, earn reward points on card usage by others and also get a share of availed discount.'
             },
             {
-                title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing ad minim veniam'
+                title: 'How secure is my card information with Credito?',
+                content: 'Credito does not ask or store any card information like Card number, CVV, etc., therefore card information is only with you.<br/>User only adds bank name and type of card to show their availability to others. You have complete control over its visibility to selected people.'
             },
             {
-                title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp aliqua. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tqua. Ut enim ad minim veniam'
+                title: 'How can we Share Cards?',
+                content: 'All the cards other have shared with you are visible on wallet, it helps you find the person to ask for card.<br/>You need to connect on personal basis to do the payment. Credito does not store card details to share it for payment.											'
             },
             {
-                title: 'Lorem ipsum dolor sit amet, consectetur adia. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmad minim veniam'
+                title: 'How Credito helps you manage transactions with others?',
+                content: 'Record your transactions with others against shared card.<br/>Easy summary check of the remaining balance yet to be settled.						'
             }
         ]
     },
-    {
-        title: 'Second',
-        rows: [
-            {
-                title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-            },
-            {
-                title: 'Lorem ipsum dolor sit amet, consectetur adipiscing',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna'
-            },
-            {
-                title: 'Lorem ipsum dolor nt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tlore magna aliqua. Ut enim ad minim veniam'
-            }
-        ]
-    },
-    {
-        title: 'Third',
-        rows: [
-            {
-                title: 'Lorem ipsum dolor sit ametincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, aliqua. Ut enim ad minim veniam'
-            },
-            {
-                title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit aliqua. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adip]iqua. Ut enim ad minim veniam'
-            },
-            {
-                title: 'Lorem ipsncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inciad minim veniam'
-            },
-            {
-                title: 'Lorem ipsum dolor sit amet, consectetura. Ut enim ad minim veniam',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
-            }
-        ]
-    }
 ]
 
 export const contactSection={

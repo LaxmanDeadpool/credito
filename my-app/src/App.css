@@ -71,11 +71,26 @@ html {
   transition: all 1s ease-out;
   transform: translateY(-20vh);
 }
+
+.firstLine{
+  font-size: clamp( 3em, 7.8vw, 7.5em );
+}
+.secondLine{
+  font-size: clamp( 3.48em, 9.05vw, 8.7em );
+}
+.thirdLine{
+  font-size: clamp( 3.48em, 9.05vw, 8.7em );
+}
+.noHighlight{
+  color: white !important
+}
+.highlight{
+  color: var(--textHighlight) !important;
+}
 .firstPgHeadingFinal{
   line-height: 100%;
   transform: translateY(0);
-  opacity: 0.5;
- 
+  opacity: 0.5; 
 }
 .firstPgSubheading{
   font-size: clamp( 1.5em, 2.6vw, 2.5em );
@@ -272,7 +287,6 @@ a{
 }
 .imgFrame{
   width: 35vh;
-  height: 70vh;
   min-width: 250px;
   z-index: 1;
 }
@@ -330,6 +344,7 @@ a{
 .imgTitle span{
   color: var(--textHighlight)
 }
+
 
 @media only screen and (max-width: 620px) {
   .menuOnBigScreen{
