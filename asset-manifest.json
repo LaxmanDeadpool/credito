@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/credito/static/css/main.aedddb67.css",
-    "main.js": "/credito/static/js/main.3c7523d9.js",
+    "main.js": "/credito/static/js/main.7742be73.js",
     "static/js/787.28cb0dcd.chunk.js": "/credito/static/js/787.28cb0dcd.chunk.js",
     "static/media/wallet.png": "/credito/static/media/wallet.908ecab5385e19793b14.png",
     "static/media/activity.png": "/credito/static/media/activity.903b3466c31b887e07e4.png",
@@ -23,11 +23,11 @@
     "static/media/crossIcon.svg": "/credito/static/media/crossIcon.7efdbdab36acce54592a3c92cc514360.svg",
     "static/media/arrowRight.svg": "/credito/static/media/arrowRight.aa23c2d548e872a7b7aa5f980bbd7ef1.svg",
     "main.aedddb67.css.map": "/credito/static/css/main.aedddb67.css.map",
-    "main.3c7523d9.js.map": "/credito/static/js/main.3c7523d9.js.map",
+    "main.7742be73.js.map": "/credito/static/js/main.7742be73.js.map",
     "787.28cb0dcd.chunk.js.map": "/credito/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aedddb67.css",
-    "static/js/main.3c7523d9.js"
+    "static/js/main.7742be73.js"
   ]
 }
