@@ -136,7 +136,7 @@ const RederRightSection = forwardRef(({ images, navMove }, ref) => {
         return { scrollIntoViewItem }
     })
 
-    return <div ref={pgRf} className="f fullPg relPos ac jc parallaxStaticSection">
+    return <div ref={pgRf}  className="f fullPg relPos jc parallaxStaticSection">
         
         <a.div scrollLeft={scroll} className="f absPos parallaxImgCont">{images.map((i, j) => <img key={j} className="parallaxImage" src={i} />)}</a.div>
 

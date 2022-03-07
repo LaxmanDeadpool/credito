@@ -19,7 +19,7 @@ export default function FaqComp({ setHeight, navMove }) {
 
     return <div style={{zIndex: -1}} ref={divRef} className="f fc faqCont">
         <div style={{ minHeight: '2em' }} />
-        <h2>Frequently asked questions</h2>
+        <h2 style={{marginBottom: '.5em'}}>Frequently asked questions</h2>
         {faqSection.map((i, index) => <FaqsComp item={i} key={index} />)}
         <div style={{ minHeight: '7.5em' }} />
     </div>
