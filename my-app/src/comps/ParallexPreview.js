@@ -6,99 +6,176 @@ import useOnScreen from "../hooks/useOnScreen"
 import { a, useSpring } from "react-spring"
 import FirstPage from "./FirstPage"
 import FaqComp from "./FaqComp"
+import ContactComp from "./ContactComp"
 
-export default function ParallaxPreview() {
+const ParallaxPreview = forwardRef(({ open, navMoveTo }, forwardedRef) => {
     const pagesBeforeThis = 1;
-    const pagesAfterThis = 1;
+
     let len = parallaxLayersData.length
     const images = parallaxLayersData.map(i => i.image)
-    const staticSectionRef=useRef();
+    const staticSectionRef = useRef();
 
-    const changeIndex=index=>staticSectionRef.current.scrollIntoViewItem(index);
+    const changeIndex = index => staticSectionRef.current.scrollIntoViewItem(index);
+
+    const [contactFactor, setCF] = useState(.5);
+    const [faqHfactor, setH] = useState(1);
+
+    const prallaxRf = useRef();
+
+    const setFaqH = h => {
+        setH(h);
+    }
+    const setContactH = h => {
+        setCF(h);
+    }
+
+    const indexSet={
+        "0" : 0,
+        "1" : 1,
+        "2" : len+pagesBeforeThis,
+        "3" : len+pagesBeforeThis+faqHfactor
+    }
+    const moveTo = (index) => {
+        prallaxRf.current.scrollTo(indexSet[`${index}`])
+    }
+
+    useImperativeHandle(forwardedRef, () => ({
+        moveTo
+    }))
+
+    const navMove=index=>{
+        navMove(indexSet[`${index}`]);
+    }
 
     return <div className="fullPg">
-        <Parallax pages={len + pagesBeforeThis + pagesBeforeThis}>
-            <ParallaxLayer offset={0} speed={.1}>
-                <FirstPage/>
-            </ParallaxLayer>
-            <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis -1 }}>
-                <RederRightSection ref={staticSectionRef} images={images}/>
-                {/* <div className="ac jc f parallaxStaticSection">
-                    <PI key={'A'} img={images} style={sis} />
-                </div> */}
-            </ParallaxLayer>
+        {
+            (faqHfactor === 1 || contactFactor === .5) ? <>  <Parallax pages={len + pagesBeforeThis + faqHfactor + contactFactor}>
+                <ParallaxLayer factor={2} offset={0} speed={.1}>
+                    <FirstPage open={open} />
+                </ParallaxLayer>
+                <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis - 1 }}>
+                    <RederRightSection ref={staticSectionRef} images={images} />
+                </ParallaxLayer>
+                {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
+                    <RenderLeftSection noObserver changeIndex={() => changeIndex(index)} index={index} item={i} />
+                </ParallaxLayer>)}
 
-            {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
-                <RenderLeftSection changeIndex={()=>changeIndex(index)} index={index} item={i} />
-            </ParallaxLayer>)}
+                <ParallaxLayer factor={faqHfactor} offset={len + pagesBeforeThis}>
+                    <FaqComp setHeight={setFaqH} />
+                </ParallaxLayer>
 
-            <ParallaxLayer offset={len + pagesBeforeThis}>
-                <FaqComp/>
-            </ParallaxLayer>
-        </Parallax>
+                <ParallaxLayer factor={contactFactor} offset={len + pagesBeforeThis + faqHfactor}>
+                    <ContactComp setHgt={setContactH} />
+                </ParallaxLayer>
+            </Parallax> </> : <>
+                <Parallax ref={prallaxRf} pages={len + pagesBeforeThis + faqHfactor + contactFactor}>
+
+                {/* <ParallaxLayer
+                sticky={{start: 0, end: 10}}
+                > <div className="navBar"/>
+                    </ParallaxLayer> */}
+
+                    <ParallaxLayer factor={2} offset={0} speed={.1}>
+                        <FirstPage navMove={()=>{}} noUseEffect open={open} />
+                    </ParallaxLayer>
+
+                    <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis - 1 }}>
+                        <RederRightSection navMove={navMove} ref={staticSectionRef} images={images} />
+                    </ParallaxLayer>
+
+                    {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
+                        <RenderLeftSection changeIndex={() => changeIndex(index)} index={index} item={i} />
+                    </ParallaxLayer>)}
+
+                    <ParallaxLayer factor={faqHfactor} offset={len + pagesBeforeThis}>
+                        <FaqComp navMove={(i)=>console.log('ac', i)} setHeight={() => { }} />
+                    </ParallaxLayer>
+
+                    <ParallaxLayer factor={contactFactor} offset={len + pagesBeforeThis + faqHfactor}>
+                        <ContactComp navMove={(i)=>console.log('ac', i)} setHgt={() => { }} />
+                    </ParallaxLayer>
+                </Parallax></>
+        }
     </div>
-}
 
-const RenderLeftSection = ({ item, index, changeIndex }) => {
+})
+
+export default ParallaxPreview
+
+const RenderLeftSection = ({ item, index, changeIndex, noObserver = false }) => {
     const itemRef = useRef();
+    const ref=useRef();
     const [animStyle, setAnimStyle] = useSpring(() => ({ opacity: 0, }))
     const comeInView = value => {
         setAnimStyle.start({ opacity: value ? 1 : 0, delay: 100 })
-        if(value)
-        changeIndex();
+        if (value)
+            changeIndex();
     }
-    useOnScreen(itemRef, comeInView, .6)
+    useEffect(()=>{
+        ref.current.innerHTML = item.title
+    }, [])
+    useOnScreen(itemRef, comeInView, .6, noObserver)
     return <div ref={itemRef} className='f fc ac jc parallaxMovingSection'>
         <a.div style={animStyle} className='f fc'>
-            <h2>{item.title}</h2>
-            <p>{item.subtitle}</p>
+            <h2 className='imgTitle' ref={ref}/>
         </a.div>
 
     </div>
 }
 
-const RederRightSection=forwardRef(({images}, ref)=>{
+const RederRightSection = forwardRef(({ images, navMove }, ref) => {
 
-    const [{scroll}, setScroll] = useSpring(()=>({scroll: 0}))
+    const [{ scroll }, setScroll] = useSpring(() => ({ scroll: 0 }))
+
     let width = null;
-    const scrollIntoViewItem=index=>{
-            if(width===null)
-                width = document.querySelector('.parallaxImage').offsetWidth + 50
-            setScroll.start({
-                scroll: width*index
-            })
-            // document.querySelectorAll('.parallaxImage')[index].scrollIntoView({behavior: 'auto'})
+    const scrollIntoViewItem = index => {
+        if (width === null)
+            width = document.querySelector('.parallaxImage').offsetWidth + 50
+        setScroll.start({
+            scroll: width * index
+        })
         
+        let x = document.querySelectorAll('.dotIndicator')
+        for(let i=0; i<x.length; i++){
+            if(i===index){
+                x[i].classList.add("dotIndicatorActive")
+            }
+            else
+                x[i].classList.remove("dotIndicatorActive")
+        }
     }
 
-
-    useImperativeHandle(ref, ()=>{
-        return {scrollIntoViewItem}
+    const pgRf = useRef();
+    useImperativeHandle(ref, () => {
+        return { scrollIntoViewItem }
     })
 
-    return <div className="f fullPg ac jc parallaxStaticSection">
-        <a.div scrollLeft={scroll} className="f parallaxImgCont">{images.map((i, j)=><img key={j} className="parallaxImage" src={i} />)}</a.div>
+    return <div ref={pgRf}  className="f fullPg relPos jc parallaxStaticSection">
+        
+        <a.div scrollLeft={scroll} className="f absPos parallaxImgCont">{images.map((i, j) => <img key={j} className="parallaxImage" src={i} />)}</a.div>
+
+        <img src={require('../mockUps/frame.png')} className="asbPos imgFrame"/>
+
+
+        <div style={{
+            right: '3em',
+            gap: '1em',
+            zIndex: 20,
+            height: '100vh',
+            
+        }} className="absPos jc f fc">
+            {images.map((i,j)=><div
+            key={j}
+            style={{
+                width: 10,
+                borderRadius: 10,
+                backgroundColor: '#fff'
+            }}
+            className="dotIndicator"
+            />)}
+        </div>
+
+
     </div>
 })
 
-const PI = ({ style, index }) => {
-    const ref = useRef();
-    const fun = val => console.log(`element ${index} is ovserved as ${val}`)
-    useOnScreen(ref, fun, .2)
-    return <div ref={ref} style={style} />
-}
-
-const mis = {
-    width: 100,
-    height: 100,
-
-    background: 'tomato',
-}
-
-const sis = {
-    marginRight: 100,
-    width: 100,
-    height: 100,
-    background: 'yellow',
-    // marginRight: 500
-}

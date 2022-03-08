@@ -5,7 +5,7 @@ import {a, useSpring, config} from 'react-spring';
 const BRGR_MRGN = 40;
 const BRGR_BTN_WID = 25;
 
-const Navbar=forwardRef(({showPopUp}, ref)=>{
+const Navbar=forwardRef(({showPopUp, scrollTo}, ref)=>{
     
     const {middleTitles, buttonText} = navStrings;
     const linkWids = useRef(new Array(middleTitles.length));
@@ -42,20 +42,10 @@ const Navbar=forwardRef(({showPopUp}, ref)=>{
             width: linkWids.current[index].wid,
             x: linkWids.current[index].x,
         })
+
+        scrollTo(index)
     
     }
-    
-    // const scrollingFun=(nextVal, preVal, progress)=>{
-        
-    //     setAnimatedStyle.start({
-    //         width: linkWids.current[i].wid,
-    //         x: linkWids.current[index].x
-    //     })
-    // }
-
-    // useImperativeHandle(ref, ()=>({
-    //     scrollingFun,
-    // }))
     
     const [burgerOpened, setBurgerOpened] = useState(false);
     const burgerStyle = useSpring({
@@ -73,9 +63,13 @@ const Navbar=forwardRef(({showPopUp}, ref)=>{
         burgerRef.current.click();
         setBurgerOpened(false);
     }
+
+    useImperativeHandle(ref, ()=>({
+        onClick
+    }))
     
         return(
-            <div className="f fixPos navBar jc">
+            <div className="f fixPos navBar2 jc">
 
             <div className="navCont relPos menuOnBigScreen">
   
@@ -95,7 +89,10 @@ const Navbar=forwardRef(({showPopUp}, ref)=>{
     
         {
             burgerOpened && <div className="f fc fixPos ac jc navLinkCont fullPg">
-            {middleTitles.map((item, index)=><RenderLink item={item} key={index} index={index} onClick={closingFun} forMobile/>)}
+            {middleTitles.map((item, index)=><RenderLink item={item} key={index} index={index} onClick={()=>{
+                onClick(index)
+                closingFun()
+            }} forMobile/>)}
         </div>
         }   
              <div className="fixPos"  style={{ backgroundColor: '#fff0', width: BRGR_BTN_WID, height: BRGR_BTN_WID , top: BRGR_MRGN - BRGR_BTN_WID/2, right: BRGR_MRGN-BRGR_BTN_WID/2, zIndex: 4}}>
@@ -125,7 +122,7 @@ const RenderLink=({item, index, addWid, onClick, forMobile})=>{
     }, [])
 
     return(
-        <a.a href={`#${item.id}`} onClick={onClick} ref={itemRef} className="navLink" style={{...animStyle, zIndex: 3, fontSize: '1em', marginTop: '.6em'}}>{item.name}</a.a> 
+        <a.a onClick={onClick} ref={itemRef} className="navLink" style={{...animStyle, zIndex: 3, fontSize: '1em', marginTop: '.6em'}}>{item.name}</a.a> 
     )
 }
 
@@ -169,11 +166,9 @@ const BurgerMenu= forwardRef(({clickFun}, ref)=> {
     clickFun();
     }
 
-    useImperativeHandle(ref, ()=>({
-        click
-    }))
+    useImperativeHandle(ref, ()=>({click}))
 
- return <div style={{width: wid, height: wid}} onClick={click} className="relPos">
+ return <div style={{width: wid, height: wid, top: -5}} onClick={click} className="relPos">
      <a.div className='centerOrigin' style={{...lineStyle, ...line1}}/>
      <a.div className='centerOrigin' style={{...lineStyle, ...line2}}/>
  </div> 

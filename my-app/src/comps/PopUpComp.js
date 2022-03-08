@@ -9,7 +9,7 @@ import {a, useSpring, config} from 'react-spring';
 import { useEffect } from "react";
 
 export default function PopUpComp({close}) {
-  const { mainString, placeHolderNo, qrCodeText } = popUpStrings;
+  const { qrCodeText } = popUpStrings;
     const [style, setStyle] = useSpring(()=>({
       scale: 0,
       opacity: 0,
@@ -23,26 +23,29 @@ export default function PopUpComp({close}) {
     })
   }, [])
   return (
-    <div style={{zIndex: 1000}} className="jc fixPos allPopUpBg f">
-    <a.div style={style} className="f popUpCont ac jc absPos">
+    <div onClick={close} style={{zIndex: 1000}} className="jc fixPos allPopUpBg f">
+    <a.div onClick={e=>e.stopPropagation()} style={style} className="f popUpCont ac jc absPos">
       <div style={{gap: '1em'}} className="f fc">
-        <h2 dangerouslySetInnerHTML={mainString} />
-        <div className="f phoneNoCont ac jc">
+
+      <div style={{gap: '1em',width: '15em'}} className="f fc">
+      <p className="grey" dangerouslySetInnerHTML={qrCodeText}/>
+
+          <img style={{width: '15em'}} src={qr}/>
+      </div>
+
+        {/* <h2 dangerouslySetInnerHTML={mainString} /> */}
+        {/* <div className="f phoneNoCont ac jc">
           <AnimInput placeholder={placeHolderNo} />
           <div className="f arrowIcon jc ac">
             <img style={{height: "1em"}} src={arrowIcon} />
           </div>
-        </div>
-        <div className="f storeIcons ac">
+        </div> */}
+        <div style={{marginTop: '1em'}} className="f storeIcons ac">
             <img style={{width: '1.25em', cursor: 'pointer'}} src={playStore}/>
             <img style={{width: '1.25em', cursor: 'pointer'}} src={appStore}/>
         </div>
       </div>
 
-      <div style={{gap: '1em',width: '9em'}} className="f fc">
-          <img style={{width: '9em'}} src={qr}/>
-          <p className="grey" dangerouslySetInnerHTML={qrCodeText}/>
-      </div>
 
       <img onClick={close} src={crossIcon} className='f ac jc crossIcon absPos' />
     </a.div>
