@@ -13,12 +13,13 @@ export default function FaqComp({ setHeight, navMove }) {
             isHeightSet.current = true
         }
         divRef.current.parentNode.style.zIndex=-1
+        divRef.current.style.height = divRef.current.offsetHeight + 'px'
     }, [])
 
 
 
     return <div style={{zIndex: -1}} ref={divRef} className="f fc faqCont">
-        <div style={{ minHeight: '2em' }} />
+        <div style={{ minHeight: '2em'}} />
         <h2 style={{marginBottom: '.5em'}}>Frequently asked questions</h2>
         {faqSection.map((i, index) => <FaqsComp item={i} key={index} />)}
         <div style={{ minHeight: '7.5em' }} />

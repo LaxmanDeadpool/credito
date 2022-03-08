@@ -286,10 +286,17 @@ a{
   width: 80vw;
   max-width: 800px;
   margin-left: 5em;
+  overflow-y: scroll;
 }
+.faqCont::-webkit-scrollbar {
+    width: 0px;
+  }
 .faq-title{
   margin-top: 2em;
 
+}
+a{
+  cursor: pointer;
 }
 .row-content-text{
   line-height: 150% !important;

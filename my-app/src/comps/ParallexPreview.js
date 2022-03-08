@@ -39,6 +39,10 @@ const ParallaxPreview = forwardRef(({ open, navMoveTo }, forwardedRef) => {
         prallaxRf.current.scrollTo(indexSet[`${index}`])
     }
 
+    const galleryMoveTo=index=>{
+        prallaxRf.current.scrollTo(pagesBeforeThis + index)
+    }
+
     useImperativeHandle(forwardedRef, () => ({
         moveTo
     }))
@@ -80,7 +84,7 @@ const ParallaxPreview = forwardRef(({ open, navMoveTo }, forwardedRef) => {
                     </ParallaxLayer>
 
                     <ParallaxLayer sticky={{ start: pagesBeforeThis, end: len + pagesBeforeThis - 1 }}>
-                        <RederRightSection navMove={navMove} ref={staticSectionRef} images={images} />
+                        <RederRightSection moveTo={galleryMoveTo} ref={staticSectionRef} images={images} />
                     </ParallaxLayer>
 
                     {parallaxLayersData.map((i, index) => <ParallaxLayer offset={index + pagesBeforeThis} speed={.5} key={index}>
@@ -123,7 +127,7 @@ const RenderLeftSection = ({ item, index, changeIndex, noObserver = false }) => 
     </div>
 }
 
-const RederRightSection = forwardRef(({ images, navMove }, ref) => {
+const RederRightSection = forwardRef(({ images, moveTo }, ref) => {
 
     const [{ scroll }, setScroll] = useSpring(() => ({ scroll: 0 }))
 
@@ -166,10 +170,12 @@ const RederRightSection = forwardRef(({ images, navMove }, ref) => {
         }} className="absPos jc f fc">
             {images.map((i,j)=><div
             key={j}
+            onClick={()=>moveTo(j)}
             style={{
                 width: 10,
                 borderRadius: 10,
-                backgroundColor: '#fff'
+                backgroundColor: '#fff',
+                cursor: 'pointer'
             }}
             className="dotIndicator"
             />)}

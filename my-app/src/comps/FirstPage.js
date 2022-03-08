@@ -42,10 +42,14 @@ const FirstPage = ({ open, navMove }) => {
             appStoreRef.current.style.display = "none"
             qrRef.current.style.display = "none"
         }
-        if (os === 'ios') {
+        if (os === 'iOS') {
             playStoreRef.current.style.display = "none"
             qrRef.current.style.display = "none"
         }
+
+        console.log(
+            'os', os
+        )
 
         headerRef.current?.classList.add('firstPgHeadingFinal');
         setTimeout(() => {
@@ -103,7 +107,8 @@ const FirstPage = ({ open, navMove }) => {
                          opacity, 
                          width: 'calc(100%-2em)',
                          height: '100%',
-                         position: 'absolute'
+                         position: 'absolute',
+                         transform: `translateY(${index===0? `-10%` : 0}) translateX(${index===2? '-5%' : 0})`
                         }}
                     >
                         <Lottie
