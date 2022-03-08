@@ -7,7 +7,7 @@ import Lottie from 'react-lottie';
 import contactLottie from '../lotties/contacts.json'
 import rupee from '../lotties/rupee.json'
 import wallet from '../lotties/wallet.json'
-import { a, useSprings } from 'react-spring'
+import { a, config, useSprings } from 'react-spring'
 
 
 const FirstPage = ({ open, navMove }) => {
@@ -58,7 +58,7 @@ const FirstPage = ({ open, navMove }) => {
     }, [])
 
     const lotties = [wallet, rupee, contactLottie]
-    const lottieTims = [ 2.23*2000 + 150, 4.06*2000+150 ,7350 + 150]
+    const lottieTims = [ 2.23*1000 + 150, 2.03*2000+150 ,5000 + 150]
 
     const [currentLottie, setCL] = useState(0)
 
@@ -72,7 +72,7 @@ const FirstPage = ({ open, navMove }) => {
 
     const lottieAnimation = useSprings(3, lotties.map((j, i)=> ({
         opacity: i === currentLottie ? 1 : 0,
-        delay: i === currentLottie ? 100 : 0
+        config: config.slow
     })))
     let time = useRef();
     useEffect(() => {
@@ -107,7 +107,8 @@ const FirstPage = ({ open, navMove }) => {
                         }}
                     >
                         <Lottie
-                            // width={`calc(100% - 2em)`}
+                            width={index===2? '60%': '100%'}
+                            isStopped={currentLottie!==index}
                             options={{
                                 ...defaultOptions,
                                 animationData: lotties[index]

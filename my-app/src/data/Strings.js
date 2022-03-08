@@ -1,6 +1,6 @@
 export const firstPgStrings={
     introPage: {
-        heading: {__html: 'Experience Next Gen<br/><span class="noHighlight"><span class="highlight">Card</span> Sharing with<span/><br/><span class="last noHighlight">Credio<span/>'},
+        heading: {__html: 'Experience <span style="color: var(--creditoBrightColor)">CREDITO</span><br/><span class="noHighlight">Next-Gen <span class="highlight">Card Sharing</span><span/>'},
         subHeading: {__html: 'Connecting People. Sharing Cards. Saving Together'},
 }
 }

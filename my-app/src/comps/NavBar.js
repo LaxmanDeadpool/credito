@@ -69,7 +69,7 @@ const Navbar=forwardRef(({showPopUp, scrollTo}, ref)=>{
     }))
     
         return(
-            <div className="f fixPos navBar jc">
+            <div className="f fixPos navBar2 jc">
 
             <div className="navCont relPos menuOnBigScreen">
   
