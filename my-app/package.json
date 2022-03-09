@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://LaxmanDeadpool.github.io/credito",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@react-spring/parallax": "^9.4.3",
