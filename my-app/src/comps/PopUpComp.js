@@ -42,7 +42,7 @@ export default function PopUpComp({close}) {
         </div> */}
         <div style={{marginTop: '1em'}} className="f storeIcons ac">
             <img style={{width: '1.25em', cursor: 'pointer'}} src={playStore}/>
-            <img style={{width: '1.25em', cursor: 'pointer'}} src={appStore}/>
+            {/* <img style={{width: '1.25em', cursor: 'pointer'}} src={appStore}/> */}
         </div>
       </div>
 

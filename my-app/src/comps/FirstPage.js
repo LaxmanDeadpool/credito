@@ -8,6 +8,7 @@ import contactLottie from '../lotties/contacts.json'
 import rupee from '../lotties/rupee.json'
 import wallet from '../lotties/wallet.json'
 import { a, config, useSprings } from 'react-spring'
+import logo from '../logo.svg';
 
 
 const FirstPage = ({ open, navMove }) => {
@@ -38,18 +39,18 @@ const FirstPage = ({ open, navMove }) => {
 
     useEffect(() => {
         let os = getMobileOperatingSystem();
-        if (os === 'Android') {
-            appStoreRef.current.style.display = "none"
-            qrRef.current.style.display = "none"
-        }
-        if (os === 'iOS') {
-            playStoreRef.current.style.display = "none"
-            qrRef.current.style.display = "none"
-        }
 
-        console.log(
-            'os', os
-        )
+        appStoreRef.current.style.display = "none"
+            // qrRef.current.style.display = "none"
+        if (os === 'Android' ||os === 'iOS') {
+            // appStoreRef.current.style.display = "none"
+            qrRef.current.style.display = "none"
+        }
+        // if (os === 'iOS') {
+        //     playStoreRef.current.style.display = "none"
+        //     qrRef.current.style.display = "none"
+        // }
+
 
         headerRef.current?.classList.add('firstPgHeadingFinal');
         setTimeout(() => {
@@ -69,9 +70,6 @@ const FirstPage = ({ open, navMove }) => {
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        // rendererSettings: {
-        //     preserveAspectRatio: 'xMid slice'
-        // }
     }
 
     const lottieAnimation = useSprings(3, lotties.map((j, i)=> ({
@@ -79,8 +77,17 @@ const FirstPage = ({ open, navMove }) => {
         config: config.slow
     })))
     let time = useRef();
+    const logoRef = useRef();
     useEffect(() => {
 
+        if(window.innerWidth>620){
+            logoRef.current.style.display = 'flex'
+            setTimeout(() => {
+                
+                logoRef.current.style.opacity = 1
+    
+            }, 1000);
+}
         time.current =setTimeout(() => {
             setCL(i=>(i+1)%3)
         }, lottieTims[currentLottie]);
@@ -91,6 +98,14 @@ const FirstPage = ({ open, navMove }) => {
     return <div ref={pgRf} className="f fullPg ac jc fc">
         <div className='f ac fpc'>
             <div className='f fc firstPgLeft'>
+    <div ref={logoRef} style={{gap: '1em', marginBottom: '1em', opacity: 0, transition: 'all 1s', display: 'none'}} className='ac'>
+    <img
+    style={{height: '10vh'}}
+    src={logo}
+    />
+    <h2 style={{color: 'white'}}>Credito</h2>
+    </div>
+
                 <h1 ref={headerRef} className='firstPgHeading' dangerouslySetInnerHTML={introPage.heading} />
                 <h3 className='firstPgSubheading' ref={subHeadingRef} dangerouslySetInnerHTML={introPage.subHeading} />
 
@@ -103,7 +118,7 @@ const FirstPage = ({ open, navMove }) => {
 
             <div className='f firstPgRight'>
                 {
-                    lottieAnimation.map(({ opacity }, index) => <a.div className=" f" style={{
+                    lottieAnimation.map(({ opacity }, index) => <a.div key={index} className=" f" style={{
                          opacity, 
                          width: 'calc(100%-2em)',
                          height: '100%',

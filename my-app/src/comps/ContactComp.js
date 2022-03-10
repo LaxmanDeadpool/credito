@@ -2,6 +2,9 @@ import { useEffect, useRef } from "react";
 import { contactSection, finalPgSections } from "../data/Strings"
 import fb from '../icons/fb.svg'
 import ig from '../icons/ig.svg'
+import yt from '../icons/yt.svg'
+import tw from '../icons/tw.svg'
+
 import li from '../icons/linkedIn.svg'
 import useOnScreen from "../hooks/useOnScreen";
 
@@ -45,9 +48,9 @@ export default function ContactComp({ setHgt, navMove }) {
                 <div className="f fc">
                     <p className="socialP">Social</p>
                     <div style={{ gap: '1em' }} className="f">
-                        <img style={{ marginTop: -2 }} className="socialMediaImg" src={li} onClick={() => window.open(social[0])} />
-                        <img className="socialMediaImg" src={fb} onClick={() => window.open(social[1])} />
-                        <img className="socialMediaImg" src={ig} onClick={() => window.open(social[2])} />
+                        <img style={{ marginTop: -2 }} className="socialMediaImg" src={tw} onClick={() => window.open(social[0].url)} />
+                        <img style={{transform: `scale(.95)`}} className="socialMediaImg" src={ig} onClick={() => window.open(social[1].url)} />
+                        <img style={{transform: `scale(1.2)`}} className="socialMediaImg" src={yt} onClick={() => window.open(social[2].url)} />
                     </div>
                 </div>
             </div>

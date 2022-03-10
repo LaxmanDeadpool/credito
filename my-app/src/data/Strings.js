@@ -85,13 +85,13 @@ export const faqSection=[
 
 export const contactSection={
     contactData: {
-            email: 'example@email.com',
-            phone: '+91 888 888 8888'
+            email: 'labs@credito.solutions',
+            phone: '+918006423975'
         },
     social: [
-        { url: "linkedIn.com" },
-        { url: "facebook.com" },
-        { url: "instagram.com" },
+        { url: "https://twitter.com/CreditoMedia?s=20&t=98xkFaioy9WMx_WgZFwUMQ" },
+        { url: "https://instagram.com/credito.solutions?utm_medium=copy_link" },
+        { url: "https://www.youtube.com/channel/UCCQMaDcyJNnBSwsbBI-HRCg" },
     ]
 }
 
